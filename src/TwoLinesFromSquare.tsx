@@ -11,7 +11,7 @@ const TwoLineFromSquare = (props : TLSProps) => {
     const {parentStyle, lineStyle, blockStyle} = useStyle(props.w, props.h, props.scale)
     return (
         <div style = {parentStyle()}>
-            <div style = {blockStyle()}>
+            <div style = {blockStyle()} onClick = {() => props.onClick()}>
             </div>
             {[0, 1].map(i => (<div key = {`line_${i}`} style = {lineStyle(i)}></div>))}
         </div>
