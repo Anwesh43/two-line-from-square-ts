@@ -43,3 +43,50 @@ export const useDimension = () => {
         h
     }
 }
+
+export const useStyle = (w : number, h : number, scale : number) => {
+    const position = 'absolute'
+    const size = Math.min(w, h) / 10 
+    const x = w / 2 
+    const y = h / 2
+    const background = 'indigo'
+    return {
+        parentStyle() {
+            const left = `${x}px`
+            const top = `${y}px`
+            return {
+                position, 
+                left, 
+                top
+            }
+        },
+        blockStyle() {
+            const top = `${-size / 2}px`
+            const left = `${-size / 2}px`
+            const width = `${size}px`
+            const height = `${size}px`
+            return {
+                position, 
+                top, 
+                left, 
+                width, 
+                height, 
+                background 
+            }
+        },
+        lineStyle(j : number) {
+            const top = `${size / 2}px`
+            const left = `${-size / 2 + j * size}px`
+            const height = `${size * Math.sin(scale * Math.PI)}px`
+            const width = `${size / 10}px`
+            return {
+                position, 
+                top, 
+                left, 
+                height, 
+                width, 
+                background
+            }
+        }
+    }
+} 
